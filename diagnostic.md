@@ -5,7 +5,7 @@ Place your responses inside the fenced code-blocks where indivated by comments.
 1.  Describe a reason why a join tables may be valuable.
 
 ```sh
-  # < Your Response Here >
+  To see what the relationship of certain things are.
 ```
 
 1.  Provide a database table structure and explain the Entity Relationship that
@@ -15,23 +15,26 @@ describes a many-to-many relationship for `Profiles`, `Movies` and `Favorites`
 join table with references to `Movies` and `Profiles`.
 
 ```sh
-  # < Your Response Here >
+  Profiles have many Movies and Favorites.
 ```
 
 1.  For the above example, what needs to be added to the Model files?
 
 ```rb
 class Profile < ActiveRecord::Base
+belongs_to: Movies
 end
 ```
 
 ```rb
 class Movie < ActiveRecord::Base
+has_many: Favorites
 end
 ```
 
 ```rb
 class Favorite < ActiveRecord::Base
+has_many: Movies
 end
 ```
 
@@ -40,11 +43,12 @@ like to show all movies favorited by a profile on
 `http://localhost:3000/profiles/1`
 
 ```sh
-  # < Your Response Here >
+  It is a way of transfering data.
 ```
 
 ```rb
 class ProfileSerializer < ActiveModel::Serializer
+attributes :Profiles
 end
 ```
 
@@ -52,13 +56,13 @@ end
 the above `Movies` and `Profiles`.
 
 ```sh
-  # < Your Response Here >
+  bundle exec rails g scaffold Favorites
 ```
 
 1.  What is `Dependent: Destroy` and where/why would we use it?
 
 ```sh
-  # < Your Response Here >
+  All elements will be deleted as well as destroyed upon use, in a model file.
 ```
 
 1.  Think of **ANY** example where you would have a one-to-many relationship as well
